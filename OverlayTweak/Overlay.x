@@ -1,7 +1,13 @@
 #import <UIKit/UIKit.h>
 #import <notify.h>
 
-static NSString *const kConfigPath = @"/var/jb/var/mobile/Library/VCNext/CameraConfig.plist";
+static inline NSString *getVCNSharedDir(void) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/var/jb"]) {
+        return @"/var/jb/var/mobile/Library/VCNext";
+    }
+    return @"/var/mobile/Library/VCNext";
+}
+#define kConfigPath [getVCNSharedDir() stringByAppendingPathComponent:@"CameraConfig.plist"]
 static NSString *const kStatusNotify = @"com.vcnext.camera.status.changed";
 
 @interface VCNOverlayWindow : UIWindow
