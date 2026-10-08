@@ -1,9 +1,15 @@
 #import "RootViewController.h"
 #import <notify.h>
 
-static NSString *const kConfigPath = @"/var/jb/var/mobile/Library/VCNext/CameraConfig.plist";
-static NSString *const kLeasePath = @"/var/jb/var/mobile/Library/VCNext/CapabilityLease.plist";
-static NSString *const kSharedDir = @"/var/jb/var/mobile/Library/VCNext";
+static inline NSString *getVCNSharedDir(void) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/var/jb"]) {
+        return @"/var/jb/var/mobile/Library/VCNext";
+    }
+    return @"/var/mobile/Library/VCNext";
+}
+#define kSharedDir getVCNSharedDir()
+#define kConfigPath [getVCNSharedDir() stringByAppendingPathComponent:@"CameraConfig.plist"]
+#define kLeasePath [getVCNSharedDir() stringByAppendingPathComponent:@"CapabilityLease.plist"]
 static NSString *const kStatusNotify = @"com.vcnext.camera.status.changed";
 
 @interface RootViewController () {
