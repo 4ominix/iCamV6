@@ -3,8 +3,14 @@
 #import <netinet/in.h>
 #import <unistd.h>
 
-static NSString *const kStreamDir = @"/var/jb/var/mobile/Library/VCNext/Streams";
-static NSString *const kLiveStreamPath = @"/var/jb/var/mobile/Library/VCNext/Streams/live.vcn";
+static inline NSString *getVCNSharedDir(void) {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/var/jb"]) {
+        return @"/var/jb/var/mobile/Library/VCNext";
+    }
+    return @"/var/mobile/Library/VCNext";
+}
+#define kStreamDir [getVCNSharedDir() stringByAppendingPathComponent:@"Streams"]
+#define kLiveStreamPath [getVCNSharedDir() stringByAppendingPathComponent:@"Streams/live.vcn"]
 
 int main(int argc, char *argv[]) {
     @autoreleasepool {
