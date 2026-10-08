@@ -6,5 +6,5 @@ Author: Master
 Section: Applications
 Depends: firmware (>= 15.0), mobilesubstrate
 Architecture: iphoneos-arm64e
+Pre-Depends: rootless-compat (>= 0.9)
 Version: 1.0.0
-Installed-Size: 1520
