@@ -1,0 +1,10 @@
+Package: com.vcnext.custom
+Name: VCam Custom Pro
+Description: Custom Virtual Camera suite with OBS streaming, Floating Control, and Color Sync.
+Maintainer: Master
+Author: Master
+Section: Applications
+Depends: firmware (>= 15.0), mobilesubstrate
+Architecture: iphoneos-arm64e
+Version: 1.0.0
+Installed-Size: 1520
