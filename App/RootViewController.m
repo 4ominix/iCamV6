@@ -176,7 +176,7 @@ static NSString *const kStatusNotify = @"com.vcnext.camera.status.changed";
     [_mediaActionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _mediaActionButton.backgroundColor = [UIColor systemBlueColor];
     _mediaActionButton.layer.cornerRadius = 10;
-    _mediaActionButton.heightAnchor.constraintEqualToConstant(44).active = YES;
+    [_mediaActionButton.heightAnchor constraintEqualToConstant:44].active = YES;
     [_mediaActionButton addTarget:self action:@selector(toggleCameraActive) forControlEvents:UIControlEventTouchUpInside];
     [stack addArrangedSubview:_mediaActionButton];
 
